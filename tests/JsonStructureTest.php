@@ -21,7 +21,6 @@ test('that the json command returns a valid answer', function () {
         ],
     ];
 
-
     $result = call_user_func(new DecodeJsonStructure($array));
 
     $this->assertEquals($result,
