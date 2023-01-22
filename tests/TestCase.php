@@ -2,9 +2,9 @@
 
 namespace Hyperlink\JsonStructure\Tests;
 
+use Hyperlink\JsonStructure\JsonStructureServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Hyperlink\JsonStructure\JsonStructureServiceProvider;
 
 class TestCase extends Orchestra
 {

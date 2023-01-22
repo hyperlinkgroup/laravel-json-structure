@@ -19,18 +19,18 @@ class JsonStructureCommand extends Command
         $this->info('Starting json structure command...');
 
 //        if ($this->argument('endpoint')) {
-            $this->info('Getting json structure from endpoint...');
+        $this->info('Getting json structure from endpoint...');
 
-            $response = Http::get(route($this->argument('endpoint')));
+        $response = Http::get(route($this->argument('endpoint')));
 
-            if ($response->failed()) {
-                $this->error('Could not get json structure from endpoint');
+        if ($response->failed()) {
+            $this->error('Could not get json structure from endpoint');
 
-                return Command::FAILURE;
-            }
-            $this->comment('Getting json structure from endpoint successful');
+            return Command::FAILURE;
+        }
+        $this->comment('Getting json structure from endpoint successful');
 
-            $json = $response->json();
+        $json = $response->json();
 //        } else {
 //            $this->info('Getting json structure from array...');
 //
@@ -39,11 +39,12 @@ class JsonStructureCommand extends Command
 
         if (is_null($json)) {
             $this->error('The json structure is null');
+
             return Command::FAILURE;
         }
 
         $this->info('Attempting to decode json structure...');
-        $result = '[' . PHP_EOL . $this->implode_recursive(',', $this->array_keys_r($json)) . PHP_EOL . ']' . PHP_EOL;
+        $result = '['.PHP_EOL.$this->implode_recursive(',', $this->array_keys_r($json)).PHP_EOL.']'.PHP_EOL;
         $this->comment('Decoding json structure successful');
 
         $this->info('Writing result to file...');
@@ -63,7 +64,8 @@ class JsonStructureCommand extends Command
                 if ($index = array_search($idx, $keys, true)) {
                     unset($keys[$index]);
                 }
-                $keys_array[$idx] = ['*' =>  $this->array_keys_r(array_values($i)[0])];
+                $keys_array[$idx] = ['*' => $this->array_keys_r(array_values($i)[0])];
+
                 continue;
             }
             if (is_array($i)) {
@@ -83,23 +85,23 @@ class JsonStructureCommand extends Command
         foreach ($array as $i => $a) {
             if (is_array($a)) {
                 $string .= (str_repeat('    ', $indent))
-                    . '\''
-                    . $i
-                    . '\''
-                    . ' => ['
-                    . PHP_EOL
-                    . $this->implode_recursive($separator, $a, $indent + 1)
-                    . PHP_EOL
-                    . (str_repeat('    ', $indent))
-                    . ']';
+                    .'\''
+                    .$i
+                    .'\''
+                    .' => ['
+                    .PHP_EOL
+                    .$this->implode_recursive($separator, $a, $indent + 1)
+                    .PHP_EOL
+                    .(str_repeat('    ', $indent))
+                    .']';
                 $array1 = array_keys($array);
                 if ($i !== end($array1)) {
-                    $string .= $separator . PHP_EOL;
+                    $string .= $separator.PHP_EOL;
                 }
             } else {
-                $string .= (str_repeat('    ', $indent)) . '\'' . $a . '\'';
+                $string .= (str_repeat('    ', $indent)).'\''.$a.'\'';
                 if ($i < count($array) - 1) {
-                    $string .= $separator . PHP_EOL;
+                    $string .= $separator.PHP_EOL;
                 }
             }
         }
@@ -109,14 +111,15 @@ class JsonStructureCommand extends Command
 
     private function is_array_of_arrays($array): bool
     {
-        if (!is_array($array)) {
+        if (! is_array($array)) {
             return false;
         }
         foreach ($array as $item) {
-            if (!is_array($item)) {
+            if (! is_array($item)) {
                 return false;
             }
         }
+
         return true;
     }
 }
