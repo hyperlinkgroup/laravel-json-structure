@@ -2,9 +2,9 @@
 
 namespace Hyperlink\JsonStructure;
 
+use Hyperlink\JsonStructure\Commands\JsonStructureCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Hyperlink\JsonStructure\Commands\JsonStructureCommand;
 
 class JsonStructureServiceProvider extends PackageServiceProvider
 {
@@ -17,9 +17,6 @@ class JsonStructureServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-json-structure')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-json-structure_table')
             ->hasCommand(JsonStructureCommand::class);
     }
 }
