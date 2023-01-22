@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Hyperlink\JsonStructure\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class JsonStructureCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-json-structure';
 
     public $description = 'My command';
 
