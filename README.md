@@ -11,14 +11,18 @@ A helper package for the assert json structure test method. It will create a jso
 You can install the package via composer:
 
 ```bash
-composer require hyperlink/laravel-json-structure
+composer require hyperlink/laravel-json-structure --dev
 ```
 
 ## Usage
 
-```php
-$jsonStructure = new Hyperlink\JsonStructure();
-echo $jsonStructure->echoPhrase('Hello, Hyperlink!');
+```bash
+php artisan json:structure "<route name>"
+```
+Example
+
+```bash
+php artisan json:structure "users.index"
 ```
 
 ## Credits
