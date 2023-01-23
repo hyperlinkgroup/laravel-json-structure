@@ -67,7 +67,11 @@ class DecodeJsonStructure
                 if ($index = array_search($idx, $keys, true)) {
                     unset($keys[$index]);
                 }
-                $keys_array[$idx] = ['*' => $this->array_keys_r(array_values($i)[0])];
+                if (count(array_values($i))) {
+                    $keys_array[$idx] = ['*' => $this->array_keys_r(array_values($i)[0])];
+                } else {
+                    $keys_array[$idx] = ['*' => []];
+                }
 
                 continue;
             }
