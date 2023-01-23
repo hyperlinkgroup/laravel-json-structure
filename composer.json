@@ -34,8 +34,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Hyperlink\\JsonStructure\\": "src",
-            "Hyperlink\\JsonStructure\\Database\\Factories\\": "database/factories"
+            "Hyperlink\\JsonStructure\\": "src"
         }
     },
     "autoload-dev": {
@@ -61,10 +60,7 @@
         "laravel": {
             "providers": [
                 "Hyperlink\\JsonStructure\\JsonStructureServiceProvider"
-            ],
-            "aliases": {
-                "JsonStructure": "Hyperlink\\JsonStructure\\Facades\\JsonStructure"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",

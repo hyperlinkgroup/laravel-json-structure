@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Storage;
 class JsonStructureCommand extends Command
 {
     public $signature = 'json:structure
-                         {endpoint? : The api route name to get the json structure from}';
+                         {endpoint? : The api route name to get the json structure from}
+                         {parameter?* : The parameters to pass to the endpoint}';
 //                         {array?* : The array to get the json structure from}';
 
     public $description = 'Converts a json structure to an array with the json keys';
@@ -21,7 +22,7 @@ class JsonStructureCommand extends Command
 
 //        if ($this->argument('endpoint')) {
         $this->info('Getting json structure from endpoint...');
-        $response = Http::get(route($this->argument('endpoint')));
+        $response = Http::get(route($this->argument('endpoint'), $this->argument('parameter')));
 
         if ($response->failed()) {
             $this->error('Could not get json structure from endpoint');
