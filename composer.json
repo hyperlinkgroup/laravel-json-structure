@@ -35,7 +35,6 @@
     "autoload": {
         "psr-4": {
             "Hyperlink\\JsonStructure\\": "src",
-            "Hyperlink\\JsonStructure\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
@@ -62,9 +61,6 @@
             "providers": [
                 "Hyperlink\\JsonStructure\\JsonStructureServiceProvider"
             ],
-            "aliases": {
-                "JsonStructure": "Hyperlink\\JsonStructure\\Facades\\JsonStructure"
-            }
         }
     },
     "minimum-stability": "dev",
